@@ -1,0 +1,44 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# AeroMocap ROS — Configuration
+# ─────────────────────────────────────────────────────────────────────────────
+
+# Execution mode: simulation | video | live
+mode: simulation
+
+server:
+  host: "0.0.0.0"
+  port: 3001
+  debug: true
+
+cameras:
+  count: 2
+  fps: 60
+  resolution:
+    width: 640
+    height: 480
+
+tracking:
+  marker_type: led          # led | aruco | chessboard
+  filter: kalman            # none | lowpass | kalman
+  publish_rate: 30          # Hz
+  num_objects: 1
+  marker_distances:
+    dist1: 0.095            # m — inner LED separation
+    dist2: 0.15             # m — outer LED separation
+  scale_reference: 0.15     # m — known reference distance
+
+simulation:
+  trajectory: circular_helix   # circular_helix | lissajous | random_walk
+  speed: 1.0                   # multiplier
+  noise: 0.002                 # position noise (m)
+
+ros2:
+  enabled: false
+  topic_prefix: /aeromocap
+  world_frame: map
+  publish_rate: 30
+
+px4:
+  enabled: false
+  serial_port: /dev/ttyUSB0
+  baud_rate: 921600

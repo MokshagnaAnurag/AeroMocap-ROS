@@ -1,0 +1,1 @@
+# AeroMocap ROS — core package
